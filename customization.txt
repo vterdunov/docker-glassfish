@@ -1,0 +1,8 @@
+enable-secure-admin
+
+create-jdbc-connection-pool --datasourceclassname=com.mysql.jdbc.jdbc2.optional.MysqlDataSource --restype=javax.sql.DataSource --property='user=hsf:password=hsf:url="jdbc:mysql://db:3306/hsf"' mysql
+create-jdbc-connection-pool --datasourceclassname=org.mariadb.jdbc.MySQLDataSource --restype=javax.sql.DataSource --property='user=hsf:password=hsf:url="jdbc:mariadb://db:3306/hsf"' mariadb
+
+create-jdbc-resource --connectionpoolid mariadb jdbc/hsf
+
+create-custom-resource --restype=java.lang.String --factoryclass=org.glassfish.resources.custom.factory.PrimitivesAndStringFactory --property value="from jndi" resource/javahowto
